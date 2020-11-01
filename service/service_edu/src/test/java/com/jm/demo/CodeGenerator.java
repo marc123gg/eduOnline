@@ -25,7 +25,7 @@ public class CodeGenerator {
         // 2、全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir("E:\\work\\guli_parent\\service\\service_edu" + "/src/main/java");
+        gc.setOutputDir("E:\\eduOnline\\service\\service_edu" + "/src/main/java");
 
         gc.setAuthor("testjava");
         gc.setOpen(false); //生成后是否打开资源管理器
@@ -45,7 +45,7 @@ public class CodeGenerator {
         dsc.setUrl("jdbc:mysql://106.52.150.44:3306/demo?serverTimezone=GMT%2B8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setPassword("Aa123456");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
 
@@ -53,7 +53,7 @@ public class CodeGenerator {
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("eduservice"); //模块名
         //包  com.atguigu.eduservice
-        pc.setParent("com.atguigu");
+        pc.setParent("com.jm");
         //包  com.atguigu.eduservice.controller
         pc.setController("controller");
         pc.setEntity("entity");
