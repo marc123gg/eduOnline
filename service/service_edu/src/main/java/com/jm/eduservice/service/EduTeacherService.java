@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * 讲师 服务类
  * </p>
  *
- * @author testjava
- * @since 2020-11-01
+ * @author marc
+ * @since 2020-11-02
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
