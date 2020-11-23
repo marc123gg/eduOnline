@@ -30,7 +30,8 @@ import java.util.List;
  * @since 2020-11-02
  */
 @RestController
-@RequestMapping("/eduservice/edu-teacher")
+@RequestMapping("/eduservice/teacher")
+@CrossOrigin
 @Api(description = "讲师管理")
 public class EduTeacherController {
 
@@ -56,7 +57,6 @@ public class EduTeacherController {
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "逻辑删除讲师")
     public R deleteById(@PathVariable String id){
-        System.out.println(eduTeacherService.removeById(id));
         return eduTeacherService.removeById(id) ? R.ok() : R.fail();
     }
 
@@ -97,6 +97,7 @@ public class EduTeacherController {
         if (StrUtil.isNotEmpty(end)) {
             queryWrapper.le("gmt_create", end);
         }
+        queryWrapper.orderByDesc("gmt_create");
         IPage<EduTeacher> data = eduTeacherService.page(page, queryWrapper);
         long total = data.getTotal();
         List<EduTeacher> list = data.getRecords();
@@ -105,7 +106,7 @@ public class EduTeacherController {
 
     @ApiOperation(value = "添加讲师")
     @PostMapping("addTeacher")
-    public R addTeacher(EduTeacher eduTeacher){
+    public R addTeacher(@RequestBody EduTeacher eduTeacher){
         return eduTeacherService.save(eduTeacher) ? R.ok() : R.fail();
      }
 
@@ -118,7 +119,7 @@ public class EduTeacherController {
 
     @ApiOperation(value = "修改讲师")
     @PostMapping("updateTeacher")
-    public R updateTeacher(EduTeacher eduTeacher){
+    public R updateTeacher(@RequestBody EduTeacher eduTeacher){
         boolean flag = eduTeacherService.updateById(eduTeacher);
         return flag ? R.ok() : R.fail();
     }

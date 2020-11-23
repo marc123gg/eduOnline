@@ -9,22 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_edu</artifactId>
+    <artifactId>service_oss</artifactId>
 
     <dependencies>
-        <!-- 阿里的excel操作包 -->
+        <!-- 阿里云oss依赖 -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
-            <version>2.1.1</version>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
-
-<!--        &lt;!&ndash; 引入阿里云音视频服务 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.jm</groupId>-->
-<!--            <artifactId>service_vod</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <!-- 日期工具栏依赖 -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

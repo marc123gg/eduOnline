@@ -1,0 +1,20 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: service-oss
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.52.150.44:8848
+
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-guangzhou.aliyuncs.com
+      keyid: LTAI4GCcNLfA7ZtbPZzBYztc
+      keysecret: 3TuEpWPvQk7yHggNlaTbyHANFh6yck
+      bucketname: forspringcloud
+

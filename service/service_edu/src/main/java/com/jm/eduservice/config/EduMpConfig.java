@@ -9,12 +9,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @MapperScan("com.jm.eduservice.mapper")
-public class EduTeacherConfig {
+public class EduMpConfig {
+    //逻辑删除插件
     @Bean
     public ISqlInjector iSqlInjector(){
         return new LogicSqlInjector();
     }
 
+    //分页插件
     @Bean
     public PaginationInterceptor paginationInterceptor(){
         return new PaginationInterceptor();
