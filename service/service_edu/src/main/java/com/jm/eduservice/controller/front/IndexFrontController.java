@@ -1,4 +1,4 @@
-package com.jm.eduservice.controller;
+package com.jm.eduservice.controller.front;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jm.commonutils.R;

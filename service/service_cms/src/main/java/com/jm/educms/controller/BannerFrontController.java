@@ -16,6 +16,7 @@ public class BannerFrontController {
     @Autowired
     private CrmBannerService bannerService;
 
+
     @GetMapping("getAllBanner")
     public R getAllBanner(){
         List<CrmBanner> list = bannerService.selectAllBanner();

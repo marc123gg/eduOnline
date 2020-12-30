@@ -1,6 +1,11 @@
 package com.jm.vod.controller;
 
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthRequest;
+import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import com.jm.commonutils.R;
+import com.jm.servicebase.exceptionhandler.JmDiyException;
+import com.jm.vod.Utils.ConstantVodUtils;
 import com.jm.vod.service.vodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +40,26 @@ public class VodController {
     public R deleteBatch(@RequestParam("videoIdList") List<String> videoIdList){
         vodService.removeListAlyVideo(videoIdList);
         return R.ok();
+    }
+
+    //根据id获取视频凭证
+    @GetMapping("getPlayAuth/{id}")
+    public R getPlayAuth(@PathVariable String id){
+        DefaultAcsClient client = ConstantVodUtils.client;
+        GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
+        try {
+            GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+            request.setVideoId(id);
+            response = client.getAcsResponse(request);
+            //播放凭证
+            return R.ok().data("playAuth",response.getPlayAuth());
+            //VideoMeta信息
+            //System.out.print("VideoMeta.Title = " + response.getVideoMeta().getTitle() + "\n");
+        } catch (Exception e) {
+            System.out.print("ErrorMessage = " + e.getLocalizedMessage());
+            return R.fail().msg(e.getLocalizedMessage());
+        }
+        //System.out.print("RequestId = " + response.getRequestId() + "\n");
     }
 
 }

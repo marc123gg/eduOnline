@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: service-statistics
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gz-cynosdbmysql-grp-3u8h0qaf.sql.tencentcdb.com:24025/demo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: Aa123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.52.150.44:8848
+
+  redis:
+    host: 106.52.150.44
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        #最大阻塞等待时间 负数表示没有限制
+        max-idle: 5
+        min-idle: 0
+
+server:
+  port: 8008
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/com/jm/staservice/mapper/xml/*.xml
+
+
+wx:
+  open:
+    app_id: wxed9954c01bb89b47
+    app_secret: a7482517235173ddb4083788de60b90e
+    redirect_url: http://guli.shop/api/ucenter/wx/callback

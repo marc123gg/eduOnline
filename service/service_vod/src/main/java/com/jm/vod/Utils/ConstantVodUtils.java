@@ -15,6 +15,7 @@ public class ConstantVodUtils implements InitializingBean {
 
     public static String ACCESS_KEY_SECRET;
     public static String ACCESS_KEY_ID;
+    public static DefaultAcsClient client;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -24,8 +25,6 @@ public class ConstantVodUtils implements InitializingBean {
         DefaultProfile profile = DefaultProfile.getProfile(regionId, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         client = new DefaultAcsClient(profile);
     }
-
-    public static DefaultAcsClient client;
 
 
 

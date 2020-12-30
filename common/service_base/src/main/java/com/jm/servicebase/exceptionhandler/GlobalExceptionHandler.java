@@ -4,15 +4,18 @@ package com.jm.servicebase.exceptionhandler;
 
 import com.jm.commonutils.R;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 统一异常返回
  * @author marc
  */
-@ControllerAdvice
+@RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
@@ -30,10 +33,15 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(JmDiyException.class)
     @ResponseBody
-    public R error(JmDiyException e) {
+    public String error(JmDiyException e) {
         e.printStackTrace();
         log.error(e.getMessage());
-        return R.fail().code(e.getCode()).msg(e.getMsg());
+        Map<String, Object> map = new HashMap<>();
+        map.put("flag", "false");
+        map.put("code", e.getCode());
+        map.put("msg", e.getMsg());
+        map.put("data", "{}");
+        return map.toString();
     }
 
 }

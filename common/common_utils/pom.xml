@@ -16,6 +16,13 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
+
+        <dependency>
+            <!-- JWT -->
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
